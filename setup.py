@@ -9,8 +9,8 @@ def convert_markdown_to_rst(file):
 setup(
     name="gregquests",
     version=open("version").read(),
-    description="Wrapper around the requests library with extra features"
-    " for cleaner, more resilient and possibly faster code",
+    description="Drop-in wrapper around the Python Requests library"
+    " for cleaner and possibly more resilient and faster code",
     long_description=convert_markdown_to_rst("README.md"),
     url="https://github.com/gdubicki/gregquests",
     author="Greg Dubicki and the upstream projects authors",
