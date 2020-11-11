@@ -1,3 +1,0 @@
-requests<3
-urllib3>=1.25.1
-brotli

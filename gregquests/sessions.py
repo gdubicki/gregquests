@@ -8,12 +8,10 @@ from requests import Session as UpstreamSession
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 from requests.compat import Callable
+from gregquests.utils import default_headers_with_brotli
 
 
 # noinspection PyUnusedLocal
-from greguests.utils import default_headers_with_brotli
-
-
 def _raise_for_status(res, *args, **kwargs):
     res.raise_for_status()
 
@@ -34,7 +32,14 @@ class Session(UpstreamSession):
         retries: Retry = Retry(
             total=2,  # 3 requests in total
             backoff_factor=1,  # retry after 2, 4 secs
-            status_forcelist=[500, 502, 503, 504, 408, 429],  # on server errors + timeout + rate limit exceeded
+            status_forcelist=[
+                500,
+                502,
+                503,
+                504,
+                408,
+                429,
+            ],  # on server errors + timeout + rate limit exceeded
             method_whitelist=[
                 "HEAD",
                 "GET",
@@ -67,29 +72,31 @@ class Session(UpstreamSession):
 
             hook = [_raise_for_status]
 
-            old_hook = p.hooks.get('response')
+            old_hook = p.hooks.get("response")
             if old_hook is None:
                 pass
-            elif hasattr(old_hook, '__iter__'):
+            elif hasattr(old_hook, "__iter__"):
                 hook.extend(old_hook)
             elif isinstance(old_hook, Callable):
                 hook.append(old_hook)
 
-            p.hooks['response'] = hook
+            p.hooks["response"] = hook
 
         return p
 
     def send(self, request, *args, **kwargs):
-        """Send a given PreparedRequest.
+        """Send a given PreparedRequest
+
+        + timeout
         :rtype: requests.Response
         """
 
         # Set default timeout, None -> default, zero -> None
-        timeout = kwargs.get('timeout')
+        timeout = kwargs.get("timeout")
         if timeout is None:
-            kwargs['timeout'] = self.default_timeout
+            kwargs["timeout"] = self.default_timeout
         elif timeout == 0:
-            kwargs['timeout'] = None
+            kwargs["timeout"] = None
 
         # noinspection PyArgumentList
         return super(Session, self).send(request, *args, **kwargs)
