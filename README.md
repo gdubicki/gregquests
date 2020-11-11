@@ -18,6 +18,10 @@ from requests_extra.api import get
 get('https://httpbin.org/headers')
 ```
 
+## Contributing
+
+*ALL* kinds of issues & PRs are very welcome! There are no formal rules of contributing yet, please use common sense. ;)
+
 ## TODO
 
 Tests.
