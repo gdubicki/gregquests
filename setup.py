@@ -30,7 +30,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         "requests<3",
-        "urllib3>=1.25.1",
+        "urllib3>=1.25.1,<1.26",
         "brotli",
     ],
     setup_requires=[
