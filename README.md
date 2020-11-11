@@ -1,26 +1,30 @@
-# requests_extra
+# requests-extra
 
 Drop-in wrapper around the [Requests](https://github.com/psf/requests) library
 that provides these **extra** features:
 
-For resiliency:
-* Retry by default (3 times in total),
-* Timeout by default (10 seconds),
-* Exception on 4xx and 5xx responses by default (automatic `raise_for_status()`),
+* For resiliency:
+  * Retry by default (3 times in total),
+  * Timeout by default (10 seconds),
+  * Exception on 4xx and 5xx responses by default (automatic `raise_for_status()`),
 
-For performance:
-* Support for Brotli enabled by default,
+* For performance:
+  * Support for Brotli enabled by default,
 
-## Example
+## How to use?
 
+1. Replace `requests` with `requests-extra` in your dependencies file
+2. Install `requests-extra` package
+3. Replace `requests.` with `requests_extra.` in your code.
+
+That's it!
+
+Example:
 ```
 from requests_extra.api import get
+
 get('https://httpbin.org/headers')
 ```
-
-## Contributing
-
-*ALL* kinds of issues & PRs are very welcome! There are no formal rules of contributing yet, please use common sense. ;)
 
 ## TODO
 
@@ -38,15 +42,20 @@ And more features:
   maybe with [reclosedev/requests-cache](https://github.com/reclosedev/requests-cache)
   or [bionikspoon/cache_requests](https://github.com/bionikspoon/cache_requests)
 
+## Contributing
+
+*ALL* kinds of issues & PRs are very welcome! There are no formal rules of contributing yet, please use common sense. ;)
+
 ## Credits
 
-I have copied the code for timeouts and `raise_for_status()` from
-the [better-requests/better-requests](https://github.com/better-requests/better-requests) library.
+Of course big thanks to all the authors of the wrapped library, Requests!
 
-I have read and reused a few concepts from
-the [CarlosAMolina/requests_custom](https://github.com/CarlosAMolina/requests_custom) library.
+The code for timeouts and `raise_for_status()` is copied from
+the [better-requests/better-requests](https://github.com/better-requests/better-requests) library. Thank you!
+
+Some concepts from
+the [CarlosAMolina/requests_custom](https://github.com/CarlosAMolina/requests_custom) library are used too. Thank you!
 
 ## License
 
-Like the upstream Requests, and the libraries I reused/was inspired with,
-this library uses the Apache 2.0 license.
+Like the wrapped Requests, and the libraries we reused, this library uses the Apache 2.0 license.
