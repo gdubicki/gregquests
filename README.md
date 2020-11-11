@@ -1,8 +1,3 @@
-![GitHub Release Date](https://img.shields.io/github/release-date/gdubicki/requests-extra)
-[![Build Status](https://travis-ci.com/gdubicki/requests-extra.svg?branch=master)](https://travis-ci.com/gdubicki/requests-extra)
-![PyPI downloads](https://img.shields.io/pypi/dm/requests-extra?label=PyPI%20Downloads)
-[![code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
 # requests-extra
 
 Drop-in wrapper around the [Requests](https://github.com/psf/requests) library
