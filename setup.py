@@ -7,12 +7,12 @@ def convert_markdown_to_rst(file):
 
 
 setup(
-    name="gregquests",
+    name="requests_extra",
     version=open("version").read(),
     description="Drop-in wrapper around the Python Requests library"
-    " for cleaner and possibly more resilient and faster code",
+    " that provides extra features.",
     long_description=convert_markdown_to_rst("README.md"),
-    url="https://github.com/gdubicki/gregquests",
+    url="https://github.com/gdubicki/requests_extra",
     author="Greg Dubicki and the upstream projects authors",
     keywords=["requests", "timeout", "retry", "exception", "brotli"],
     classifiers=[

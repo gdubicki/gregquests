@@ -11,7 +11,7 @@ def default_headers_with_brotli():
     :rtype: requests.structures.CaseInsensitiveDict
     """
 
-    name = "gregquests"
+    name = "requests-extra"
     version = pkg_resources.get_distribution(name).version
 
     return CaseInsensitiveDict(

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from requests.exceptions import RetryError, ConnectionError
-from gregquests.api import get
+from requests_extra.api import get
 
 import http
 

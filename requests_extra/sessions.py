@@ -8,10 +8,12 @@ from requests import Session as UpstreamSession
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 from requests.compat import Callable
-from gregquests.utils import default_headers_with_brotli
 
 
 # noinspection PyUnusedLocal
+from requests_extra.utils import default_headers_with_brotli
+
+
 def _raise_for_status(res, *args, **kwargs):
     res.raise_for_status()
 

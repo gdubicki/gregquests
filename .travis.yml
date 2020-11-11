@@ -23,7 +23,7 @@ jobs:
 
       - provider: pypi
         on:
-          repo: gdubicki/gregquests
+          repo: gdubicki/requests-extra
           tags: true
         user: gdubicki
         password:

@@ -1,19 +1,20 @@
-# gregquests
+# requests_extra
 
-This is a wrapper around the [Requests](https://github.com/psf/requests) library
-that provides these extra features:
+Drop-in wrapper around the [Requests](https://github.com/psf/requests) library
+that provides these **extra** features:
 
+For resiliency:
 * Retry by default (3 times in total),
 * Timeout by default (10 seconds),
-* Exception on 4xx and 5xx responses (`raise_for_status()`) by default,
-* Support for Brotli enabled by default,
+* Exception on 4xx and 5xx responses by default (automatic `raise_for_status()`),
 
-It should be a drop-in replacement for requests.
+For performance:
+* Support for Brotli enabled by default,
 
 ## Example
 
 ```
-from gregquests.api import get
+from requests_extra.api import get
 get('https://httpbin.org/headers')
 ```
 
