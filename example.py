@@ -2,25 +2,36 @@
 
 from requests.exceptions import RetryError, ConnectionError
 from requests_extra.api import get
+from requests_extra.api import get_session
 
 import http
-
-http.client.HTTPConnection.debuglevel = 1
+# http.client.HTTPConnection.debuglevel = 1
 
 print("Example 1: brotli support")
 
-get("https://httpbin.org/headers")
+print(get("https://httpbin.org/headers"))
 
-print("Example 2: default retries")
+print("Example 2: automatic reusing HTTP connections support")
+
+print(get("https://httpbin.org/cookies/set/foo/bar"))
+
+print("Automatic sessions DO NOT store cookies to simulate non-session requests")
+print(get("https://httpbin.org/cookies"))
+
+print(get_session.cache_info())
+
+print("Example 3: default retries")
 
 try:
-    get("https://httpbin.org/status/429")
+    print(get("https://httpbin.org/status/429"))
 except RetryError:
     print("Max retries reached, as expected.")
 
-print("Example 3: default timeout + retries")
+print("Example 4: default timeout + retries")
 
 try:
-    get("https://httpbin.org/delay/15")
+    print(get("https://httpbin.org/delay/15"))
 except ConnectionError:
     print("Max retries after timeouts reaches, as expected.")
+
+print(get_session.cache_info())
