@@ -31,6 +31,7 @@ get('https://httpbin.org/headers')
 Tests.
 
 And more features:
+
 * Single line logging of requests and/or responses, with default secrets redaction,
 * HTTP/2 support (by switching to [encode/httpx](https://github.com/encode/httpx) as a backend),
 * Rate limiting support, including respecting the appropriate HTTP headers,
