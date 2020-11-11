@@ -14,6 +14,7 @@ that provides these **extra** features:
   * Exception on 4xx and 5xx responses by default (automatic `raise_for_status()`),
 
 * For performance:
+  * Automatic connection reuse (keep-alive) without session,
   * Support for Brotli enabled by default,
 
 ## How to use?

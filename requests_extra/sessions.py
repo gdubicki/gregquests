@@ -14,6 +14,7 @@ from requests.compat import Callable
 from requests_extra.utils import default_headers_with_brotli
 
 
+# noinspection PyUnusedLocal
 def _raise_for_status(res, *args, **kwargs):
     res.raise_for_status()
 

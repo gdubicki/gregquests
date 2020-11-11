@@ -32,6 +32,7 @@ setup(
         "requests<3",
         "urllib3>=1.25.1,<1.26",
         "brotli",
+        "requests_toolbelt",
     ],
     setup_requires=[
         "pypandoc",

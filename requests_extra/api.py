@@ -6,11 +6,21 @@ requests.api
 
 This module implements the Requests API.
 
-:copyright: (c) 2012 by Kenneth Reitz.
+:copyright: (c) 2012 by Kenneth Reitz & (c) 2020 by Greg Dubicki
 :license: Apache2, see LICENSE for more details.
 """
 
+from functools import lru_cache
 from . import sessions
+from requests_toolbelt.cookies.forgetful import ForgetfulCookieJar
+
+
+@lru_cache(maxsize=100)
+def get_session(protocol_host_and_port):
+    print(f"new session for {protocol_host_and_port}")
+    session = sessions.Session()
+    session.cookies = ForgetfulCookieJar()
+    return session
 
 
 def request(method, url, **kwargs):
@@ -54,11 +64,9 @@ def request(method, url, **kwargs):
       <Response [200]>
     """
 
-    # By using the 'with' statement we are sure the session is closed, thus we
-    # avoid leaving sockets open which can trigger a ResourceWarning in some
-    # cases, and look like a memory leak in others.
-    with sessions.Session() as session:
-        return session.request(method=method, url=url, **kwargs)
+    protocol_host_and_port = url.split("/")[0] + "|" + url.split("/")[2]
+    session = get_session(protocol_host_and_port)
+    return session. request(method=method, url=url, **kwargs)
 
 
 def get(url, params=None, **kwargs):
