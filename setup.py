@@ -12,7 +12,7 @@ setup(
     description="Drop-in wrapper around the Python Requests library"
     " that provides extra features.",
     long_description=convert_markdown_to_rst("README.md"),
-    url="https://github.com/gdubicki/requests_extra",
+    url="https://github.com/gdubicki/requests-extra",
     author="Greg Dubicki and the upstream projects authors",
     keywords=["requests", "timeout", "retry", "exception", "brotli"],
     classifiers=[
