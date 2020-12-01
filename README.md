@@ -14,7 +14,7 @@ that provides these **extra** features:
   * Exception on 4xx and 5xx responses by default (automatic `raise_for_status()`),
 
 * For performance:
-  * Automatic connection reuse (keep-alive) without session,
+  * Automatic HTTP keep-alive without explicitly using session,
   * Support for Brotli enabled by default,
 
 ## How to use?
@@ -31,6 +31,8 @@ from requests_extra.api import get
 
 get('https://httpbin.org/headers')
 ```
+
+See more examples in [examples.py](https://github.com/requests-extra/requests-extra/examples.py).
 
 ## TODO
 
@@ -55,13 +57,15 @@ And more features:
 
 ## Credits
 
-Of course big thanks to all the authors of the wrapped library, Requests!
+Firstly big thanks to all the authors of the wrapped library, Requests!
 
-The code for timeouts and `raise_for_status()` is copied from
-the [better-requests/better-requests](https://github.com/better-requests/better-requests) library. Thank you!
+Additionally thank you to the authors of reused code: 
 
-Some concepts from
-the [CarlosAMolina/requests_custom](https://github.com/CarlosAMolina/requests_custom) library are used too. Thank you!
+* The code for timeouts and `raise_for_status()` is copied from
+the [better-requests/better-requests](https://github.com/better-requests/better-requests) library.
+* The code for LFU cache is copied from the [luxinger/lfu_cache](https://github.com/luxigner/lfu_cache).
+* Some concepts from
+the [CarlosAMolina/requests_custom](https://github.com/CarlosAMolina/requests_custom) library are used too.
 
 ## License
 
