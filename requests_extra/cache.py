@@ -1,3 +1,12 @@
+# Copyright (c) 2020 Greg Dubicki
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+#
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
 # MIT License
 #
 # Copyright (c) 2018 Shane Wang
@@ -175,7 +184,11 @@ class LFUCache(object):
 
     def dump_cache(self):
         head_freq_node = self.freq_link_head
-        self.cache.pop(head_freq_node.cache_head.key)
+
+        # close the session when removing it from cache
+        session = self.cache.pop(head_freq_node.cache_head.key)
+        session.close()
+
         head_freq_node.pop_head_cache()
 
         if head_freq_node.count_caches() == 0:
