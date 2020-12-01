@@ -34,6 +34,10 @@ setup(
         "brotli",
         "requests_toolbelt",
     ],
+    tests_requires=[
+        "pytest",
+        "coverage",
+    ],
     setup_requires=[
         "pypandoc",
     ],
