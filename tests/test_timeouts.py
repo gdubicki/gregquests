@@ -4,9 +4,8 @@ import requests_extra.defaults
 from requests_extra import get
 from requests.exceptions import ConnectionError
 
-import logging
-logging.basicConfig(level=logging.DEBUG)
-
+# import logging
+# logging.basicConfig(level=logging.DEBUG)
 
 
 def test_timeouts_enabled_by_default():
