@@ -11,7 +11,7 @@ from requests.compat import Callable
 
 
 # noinspection PyUnusedLocal
-from requests_extra.utils import default_headers_with_brotli
+from requests_extra.internal.utils import default_headers_with_brotli
 
 
 # noinspection PyUnusedLocal
@@ -94,7 +94,7 @@ class Session(UpstreamSession):
         :rtype: requests.Response
         """
 
-        # Set default timeout, None -> default, zero -> None
+        # Set default timeout, None -> default, 0 -> no timeout
         timeout = kwargs.get("timeout")
         if timeout is None:
             kwargs["timeout"] = self.default_timeout

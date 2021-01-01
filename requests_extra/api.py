@@ -9,24 +9,7 @@ This module implements the Requests API.
 :copyright: (c) 2012 by Kenneth Reitz & (c) 2020 by Greg Dubicki
 :license: Apache2, see LICENSE for more details.
 """
-
-from . import sessions
-from requests_toolbelt.cookies.forgetful import ForgetfulCookieJar
-
-from .cache import LFUCache
-
-lfu = LFUCache(10)
-
-
-def get_session(protocol_host_and_port):
-    maybe_session = lfu.get(protocol_host_and_port)
-    if maybe_session != -1:
-        return maybe_session
-    else:
-        session = sessions.Session()
-        session.cookies = ForgetfulCookieJar()
-        lfu.set(protocol_host_and_port, session)
-        return session
+from requests_extra.internal.session_cache import get_cached_session
 
 
 def request(method, url, **kwargs):
@@ -70,8 +53,7 @@ def request(method, url, **kwargs):
       <Response [200]>
     """
 
-    protocol_host_and_port = url.split("/")[0] + "|" + url.split("/")[2]
-    session = get_session(protocol_host_and_port)
+    session = get_cached_session(url)
     return session.request(method=method, url=url, **kwargs)
 
 
