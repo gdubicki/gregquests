@@ -3,60 +3,41 @@
 :copyright: (c) 2020 by Greg Dubicki (c) 2019 by better-requests (c) 2012 by Kenneth Reitz.
 :license: Apache2, see LICENSE for more details.
 """
+import logging
 
 from requests import Session as UpstreamSession
 from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 from requests.compat import Callable
 
-
-# noinspection PyUnusedLocal
 from requests_extra.internal.utils import default_headers_with_brotli
+import requests_extra.defaults
 
 
-# noinspection PyUnusedLocal
 def _raise_for_status(res, *args, **kwargs):
     res.raise_for_status()
 
 
 class Session(UpstreamSession):
 
-    default_timeout = 10
-    auto_raise_for_status = True
-
     def __init__(self):
         """A Requests session.
 
         + retries
+        + auto raise for status
         """
 
         super(Session, self).__init__()
 
-        retries: Retry = Retry(
-            total=2,  # 3 requests in total
-            backoff_factor=1,  # retry after 2, 4 secs
-            status_forcelist=[
-                500,
-                502,
-                503,
-                504,
-                408,
-                429,
-            ],  # on server errors + timeout + rate limit exceeded
-            method_whitelist=[
-                "HEAD",
-                "GET",
-                "PUT",
-                "DELETE",
-                "OPTIONS",
-                "TRACE",
-            ],
+        logging.debug('Setting up retries for a new session...')
+        retry_strategy = Retry(
+            total=requests_extra.defaults.retries_total,
+            backoff_factor=requests_extra.defaults.retries_backoff_factor,
+            status_forcelist=requests_extra.defaults.retries_status_forcelist,
+            allowed_methods=requests_extra.defaults.retries_allowed_methods,
         )
-        self.mount("http://", HTTPAdapter(max_retries=retries))
-        self.mount("https://", HTTPAdapter(max_retries=retries))
-
-        self.default_timeout = Session.default_timeout
-        self.auto_raise_for_status = Session.auto_raise_for_status
+        self.mount("http://", HTTPAdapter(max_retries=retry_strategy))
+        self.mount("https://", HTTPAdapter(max_retries=retry_strategy))
 
         self.headers = default_headers_with_brotli()
 
@@ -68,22 +49,25 @@ class Session(UpstreamSession):
 
         p = super(Session, self).prepare_request(request)
 
-        # Auto raise_for_status
-        if self.auto_raise_for_status:
+        # add raise_for_status as a hook
+        if requests_extra.defaults.auto_raise_for_status:
+            # TODO: consider checking if raise_for_status has been manually added already
+
+            logging.debug('Enabling up raise_for_status() for a request...')
             if p.hooks is None:
                 p.hooks = {}
 
-            hook = [_raise_for_status]
+            hooks = [_raise_for_status]
 
-            old_hook = p.hooks.get("response")
-            if old_hook is None:
+            old_hooks = p.hooks.get("response")
+            if old_hooks is None:
                 pass
-            elif hasattr(old_hook, "__iter__"):
-                hook.extend(old_hook)
-            elif isinstance(old_hook, Callable):
-                hook.append(old_hook)
+            elif hasattr(old_hooks, "__iter__"):
+                hooks.extend(old_hooks)
+            elif isinstance(old_hooks, Callable):
+                hooks.append(old_hooks)
 
-            p.hooks["response"] = hook
+            p.hooks["response"] = hooks
 
         return p
 
@@ -97,7 +81,7 @@ class Session(UpstreamSession):
         # Set default timeout, None -> default, 0 -> no timeout
         timeout = kwargs.get("timeout")
         if timeout is None:
-            kwargs["timeout"] = self.default_timeout
+            kwargs["timeout"] = requests_extra.defaults.timeout
         elif timeout == 0:
             kwargs["timeout"] = None
 

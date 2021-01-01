@@ -29,8 +29,8 @@ setup(
     ],
     packages=find_packages(),
     install_requires=[
-        "requests<3",
-        "urllib3>=1.25.1,<1.26",
+        "requests>=2.25.1,<3",
+        "urllib3>=1.26,<2",
         "brotli",
         "requests_toolbelt",
     ],

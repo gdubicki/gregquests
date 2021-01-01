@@ -1,6 +1,5 @@
 from requests_extra.internal.cache import LFUCache
 from requests_extra import sessions
-from requests_toolbelt.cookies.forgetful import ForgetfulCookieJar
 from urllib.parse import urlparse
 
 import logging
@@ -18,6 +17,12 @@ def get_cached_session(url):
     maybe_session = lfu.get(cache_key)
     if maybe_session != -1:
         logger.debug("Got session from cache!")
+
+        # we need to clear the cookie jar of this session before reusing it
+        # to simulate non-sessioned requests
+
+        maybe_session.cookies.clear()
+
         return maybe_session
     else:
         logger.debug("No such session in cache - creating new one...")
@@ -44,9 +49,4 @@ def get_cache_key(url):
 
 def get_new_session():
     session = sessions.Session()
-
-    # emulate non-sessioned behavior by NOT passing cookies on subsequent requests
-    # that we got from previous requests
-    session.cookies = ForgetfulCookieJar()
-
     return session
