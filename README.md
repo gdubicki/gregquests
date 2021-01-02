@@ -1,6 +1,6 @@
 [![code](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-![linter](https://github.com/requests-extra/requests-extra/workflows/.github/workflows/linter.yml/badge.svg?branch=main)
-![tests](https://github.com/requests-extra/requests-extra/workflows/.github/workflows/tests.yml/badge.svg?branch=main)
+![linter](https://github.com/requests-extra/requests-extra/workflows/Linter%20(Black)/badge.svg)
+![tests](https://github.com/requests-extra/requests-extra/workflows/Tests%20(tox%20%26%20pytest)/badge.svg)
 
 # requests-extra
 
