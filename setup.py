@@ -10,8 +10,11 @@ def convert_markdown_to_rst(file):
 
 # we need this to make reading the version work in some CI envs (like GitHub actions)
 def get_version_file_path():
-    this_script_directory = os.path.dirname(os.path.abspath(__file__))
-    return this_script_directory + "/version"
+    ci_path = '/home/runner/work/requests-extra/requests-extra'
+    if os.path.isfile(ci_path + '/version'):
+        return ci_path + '/version'
+    else:
+        return 'version'
 
 
 setup(
