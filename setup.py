@@ -32,7 +32,6 @@ setup(
         "requests>=2.25.1,<3",
         "urllib3>=1.26,<2",
         "brotli",
-        "requests_toolbelt",
     ],
     # TODO: consider migrating to PEP 517. for now install the below dependency by yourself / in the CI.
     # setup_requires=[
