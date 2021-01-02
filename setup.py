@@ -1,14 +1,22 @@
-from setuptools import setup, find_packages
+import os
+
 from pypandoc import convert_file
+from setuptools import setup, find_packages
 
 
 def convert_markdown_to_rst(file):
     return convert_file(file, "rst")
 
 
+# we need this to make reading the version work in some CI envs (like GitHub actions)
+def get_version_file_path():
+    this_script_directory = os.path.dirname(os.path.abspath(__file__))
+    return this_script_directory + "/version"
+
+
 setup(
     name="requests_extra",
-    version=open("version").read(),
+    version=open(get_version_file_path()).read(),
     description="Drop-in wrapper around the Python Requests library"
     " that provides extra features.",
     long_description=convert_markdown_to_rst("README.md"),
