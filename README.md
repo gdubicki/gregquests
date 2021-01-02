@@ -1,3 +1,7 @@
+![linter](https://github.com/requests-extra/requests-extra/workflows/.github/workflows/linter.yml/badge.svg)
+[![code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![tests](https://github.com/requests-extra/requests-extra/workflows/.github/workflows/tests.yml/badge.svg)
+
 # requests-extra
 
 Drop-in replacement for the [Requests](https://github.com/psf/requests) library
