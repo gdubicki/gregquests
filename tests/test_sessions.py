@@ -2,6 +2,7 @@ from requests_extra import get
 
 
 import logging
+
 logging.basicConfig(level=logging.DEBUG)
 
 
@@ -26,7 +27,7 @@ def test_automatic_session_cookies_working_on_first_request():
 
     # on the 1st request that gets a response with cookies we SHOULD be able to read them
     response1 = get("https://httpbin.org/cookies/set/foo/bar", allow_redirects=False)
-    assert response1.cookies['foo'] == 'bar'
+    assert response1.cookies["foo"] == "bar"
 
 
 def test_automatic_session_cookies_not_getting_passed_on_subsequent_requests():
@@ -34,9 +35,9 @@ def test_automatic_session_cookies_not_getting_passed_on_subsequent_requests():
     # on the 1st request that gets a response with cookies we SHOULD be able to read them
 
     response1 = get("https://httpbin.org/cookies/set/foo2/bar2", allow_redirects=False)
-    assert response1.cookies['foo2'] == 'bar2'
+    assert response1.cookies["foo2"] == "bar2"
 
     # ...but the 2nd request should NOT contain the cookie set above!
 
     response2 = get("https://httpbin.org/cookies")
-    assert response2.json()['cookies'] == {}
+    assert response2.json()["cookies"] == {}

@@ -31,6 +31,7 @@
 
 # -*- coding: utf-8 -*-
 
+
 class CacheNode(object):
     def __init__(self, key, value, freq_node, pre, nxt):
         self.key = key
@@ -71,7 +72,7 @@ class FreqNode(object):
         elif self.cache_head == self.cache_tail:
             return 1
         else:
-            return '2+'
+            return "2+"
 
     def remove(self):
         if self.pre is not None:
@@ -128,7 +129,6 @@ class FreqNode(object):
 
 
 class LFUCache(object):
-
     def __init__(self, capacity):
         self.cache = {}  # {key: cache_node}
         self.capacity = capacity

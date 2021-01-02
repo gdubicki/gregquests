@@ -19,7 +19,6 @@ def _raise_for_status(res, *args, **kwargs):
 
 
 class Session(UpstreamSession):
-
     def __init__(self):
         """A Requests session.
 
@@ -29,7 +28,7 @@ class Session(UpstreamSession):
 
         super(Session, self).__init__()
 
-        logging.debug('Setting up retries for a new session...')
+        logging.debug("Setting up retries for a new session...")
         retry_strategy = Retry(
             total=requests_extra.defaults.retries_total,
             backoff_factor=requests_extra.defaults.retries_backoff_factor,
@@ -53,7 +52,7 @@ class Session(UpstreamSession):
         if requests_extra.defaults.auto_raise_for_status:
             # TODO: consider checking if raise_for_status has been manually added already
 
-            logging.debug('Enabling up raise_for_status() for a request...')
+            logging.debug("Enabling up raise_for_status() for a request...")
             if p.hooks is None:
                 p.hooks = {}
 

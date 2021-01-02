@@ -12,7 +12,6 @@ retries_status_forcelist = [
     requests.codes.bad_gateway,  # HTTP 502
     requests.codes.service_unavailable,  # HTTP 503
     requests.codes.gateway_timeout,  # HTTP 504
-
     requests.codes.request_timeout,  # HTTP 408
     requests.codes.too_many_requests,  # HTTP 429
 ]

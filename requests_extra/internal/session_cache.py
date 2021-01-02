@@ -3,6 +3,7 @@ from requests_extra import sessions
 from urllib.parse import urlparse
 
 import logging
+
 logger = logging.getLogger(__name__)
 
 lfu = LFUCache(10)
@@ -35,7 +36,7 @@ def get_cache_key(url):
     # we want to prevent reconnecting so sessions are kept in cache per scheme, host and port,
     # f.e. "http://httpbin.org:80" or "https://www.google.com:443"
 
-    parsed_url = urlparse(url, scheme='http')
+    parsed_url = urlparse(url, scheme="http")
 
     # netloc 'httpbin.org:80' and 'httpbin.org' are de facto the same for 'http' scheme
     # simlarly for port 443 with 'https'
