@@ -1,2 +1,2 @@
-from .api import request, get, head, post, patch, put, delete, options
+from .api import delete, get, head, options, patch, post, put, request
 from .sessions import Session

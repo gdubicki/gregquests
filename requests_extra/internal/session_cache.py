@@ -1,8 +1,9 @@
-from requests_extra.internal.cache import LFUCache
-from requests_extra import sessions
+import logging
 from urllib.parse import urlparse
 
-import logging
+from requests_extra import sessions
+from requests_extra.internal.cache import LFUCache
+
 
 logger = logging.getLogger(__name__)
 
