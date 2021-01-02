@@ -14,11 +14,11 @@ that wraps it to provide these ✨**extra**✨ features:
 
 ## When to use it?
 
-This library is highly opinionated and uses a rather simplistic, so it's best use cases are:
- * improving many small scripts - f.e. used for monitoring,
- * modernization of a big but simple and well-tested projects - f.e. old tests,
+This library is highly opinionated and uses a rather simplistic approach so it may or may not fit your project.
+For us it did help in the following use cases:
 
-So it should be good, but YMMV!
+* improving many small scripts - f.e. used for monitoring,
+* modernization of a big but simple and well-tested projects - f.e. old tests,
 
 ## How to use?
 
@@ -28,7 +28,7 @@ So it should be good, but YMMV!
 That's it!
 
 Example:
-```
+```python
 # instead of 'from requests import get'
 from requests_extra import get
 
@@ -42,14 +42,16 @@ For more examples please see the [tests](https://github.com/requests-extra/reque
 See [defaults.py](https://github.com/requests-extra/requests-extra/requests_extra/defaults.py).
 
 To change some of them for all of your code do this:
-```
+```python
 import requests_extra.defaults
 
 requests_extra.defaults.timeout = 1
 ```
 
 You can also overwrite them for a single request in the usual way:
-```
+```python
+from requests_extra import get
+
 get('https://httpbin.org', timeout=5)
 ```
 
@@ -77,7 +79,7 @@ More features:
 
 Firstly big thanks to all the authors of the wrapped library, Requests!
 
-Additionally thank you to the authors of reused code: 
+Additionally thank you to the authors of reused code:
 
 * The code for timeouts and `raise_for_status()` is copied from
 the [better-requests/better-requests](https://github.com/better-requests/better-requests) library.
