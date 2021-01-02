@@ -7,11 +7,11 @@ import logging
 
 from requests import Session as UpstreamSession
 from requests.adapters import HTTPAdapter
-from urllib3 import Retry
 from requests.compat import Callable
+from urllib3 import Retry
 
-from requests_extra.internal.utils import default_headers_with_brotli
 import requests_extra.defaults
+from requests_extra.internal.utils import default_headers_with_brotli
 
 
 def _raise_for_status(res, *args, **kwargs):

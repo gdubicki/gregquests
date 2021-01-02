@@ -3,6 +3,7 @@ from requests.exceptions import RetryError
 
 from requests_extra import get
 
+
 # import logging
 # logging.basicConfig(level=logging.DEBUG)
 

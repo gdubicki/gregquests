@@ -1,8 +1,8 @@
 import pytest
+from requests.exceptions import HTTPError
 
 import requests_extra.defaults
 from requests_extra import get
-from requests.exceptions import HTTPError
 
 
 def test_exception_on_4xx():

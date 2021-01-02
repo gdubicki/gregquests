@@ -4,7 +4,6 @@ from urllib.parse import urlparse
 from requests_extra import sessions
 from requests_extra.internal.cache import LFUCache
 
-
 logger = logging.getLogger(__name__)
 
 lfu = LFUCache(10)

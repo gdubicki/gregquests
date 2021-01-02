@@ -1,7 +1,6 @@
-from requests_extra import get
-
-
 import logging
+
+from requests_extra import get
 
 logging.basicConfig(level=logging.DEBUG)
 

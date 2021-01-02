@@ -1,8 +1,9 @@
 import pytest
+from requests.exceptions import ConnectionError
 
 import requests_extra.defaults
 from requests_extra import get
-from requests.exceptions import ConnectionError
+
 
 # import logging
 # logging.basicConfig(level=logging.DEBUG)
