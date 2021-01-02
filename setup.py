@@ -34,7 +34,8 @@ setup(
         "brotli",
         "requests_toolbelt",
     ],
-    setup_requires=[
-        "pypandoc",
-    ],
+    # TODO: consider migrating to PEP 517. for now install the below dependency by yourself / in the CI.
+    # setup_requires=[
+    #     "pypandoc",
+    # ],
 )
