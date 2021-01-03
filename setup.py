@@ -32,8 +32,6 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
-        "Intended Audience :: Information Technology",
-        "Intended Audience :: System Administrators",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
         "Topic :: Internet :: WWW/HTTP",

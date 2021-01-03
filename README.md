@@ -9,14 +9,14 @@
 Drop-in replacement for the [Requests](https://github.com/psf/requests) library
 that wraps it to provide these ✨**extra**✨ features:
 
-* For resiliency: 🤘
-  * Retry by default (3 times in total) with backoff / respecting `Retry-After`,
-  * Timeout by default (10 seconds),
-  * Exception on 4xx and 5xx responses by default (automatic `raise_for_status()`),
+**Improved resiliency** 🤘
+* Retry by default (3 times in total) with backoff / respecting `Retry-After`,
+* Timeout by default (10 seconds),
+* Exception on 4xx and 5xx responses by default (automatic `raise_for_status()`),
 
-* For performance: ⏩
-  * Automatic HTTP keep-alive without explicitly using session,
-  * Support for Brotli enabled by default,
+**Improved performance** ⏩
+* Automatic HTTP keep-alive without explicitly using session,
+* Support for Brotli enabled by default,
 
 ## When to use it?
 
@@ -41,11 +41,11 @@ from requests_extra import get
 get('https://httpbin.org/headers')
 ```
 
-For more examples please see the [tests](https://github.com/requests-extra/requests-extra/tests/).
+For more examples please see the [tests](https://github.com/requests-extra/requests-extra/tree/main/tests).
 
 ## How to change the defaults?
 
-See [defaults.py](https://github.com/requests-extra/requests-extra/requests_extra/defaults.py).
+See [defaults.py](https://github.com/requests-extra/requests-extra/blob/main/requests_extra/defaults.py).
 
 To change some of them for all of your code do this:
 ```python
