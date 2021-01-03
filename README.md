@@ -10,11 +10,13 @@ Drop-in replacement for the [Requests](https://github.com/psf/requests) library
 that wraps it to provide these ✨**extra**✨ features:
 
 **Improved resiliency** 🤘
+
 * Retry by default (3 times in total) with backoff / respecting `Retry-After`,
 * Timeout by default (10 seconds),
 * Exception on 4xx and 5xx responses by default (automatic `raise_for_status()`),
 
 **Improved performance** ⏩
+
 * Automatic HTTP keep-alive without explicitly using session,
 * Support for Brotli enabled by default,
 
