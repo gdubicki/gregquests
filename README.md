@@ -1,5 +1,6 @@
+![status](https://img.shields.io/pypi/status/requests-extra)
 [![version](https://badge.fury.io/py/requests-extra.svg)](https://badge.fury.io/py/requests-extra)
-![release date](https://img.shields.io/github/release-date/egnyte/requests-extra)
+![release date](https://img.shields.io/github/release-date-pre/requests-extra/requests-extra)
 ![linter](https://github.com/requests-extra/requests-extra/workflows/Linter%20(Black)/badge.svg)
 ![tests](https://github.com/requests-extra/requests-extra/workflows/Tests%20(tox%20%26%20pytest)/badge.svg)
 
